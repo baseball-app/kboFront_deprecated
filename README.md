@@ -10,6 +10,8 @@ Xcode 설치
 
 <br />
 
+# React Native CLI + Typescript Template Basic Notice
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
