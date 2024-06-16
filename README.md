@@ -1,5 +1,11 @@
 # 오늘의 야구 프론트
 
+### 프로젝트 실행 명령어
+
+```bash
+npm run ios
+```
+
 ### 기본 필요 환경 세팅
 
 <strong>node 설치</strong>
@@ -8,7 +14,7 @@
 brew install node
 ```
 
-
+<p>Node 버전 22.3.0 에서 pyncode 모듈 지원 문제로 18.18.2로 downgrade</p>
 
 <strong>
 Watchman 설치
@@ -36,7 +42,6 @@ brew install watchman
 watchman --version
 ```
 
-
 ### For iOS
 
 <strong>
@@ -56,6 +61,7 @@ pod --version
 ```
 
 ### For Android
+
 일단 보류
 
 <br />
@@ -66,14 +72,13 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 # Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 ## Step 1: Start the Metro Server
 
 First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
 
 To start Metro, run the following command from the _root_ of your React Native project:
-
 
 ```bash
 # using npm
