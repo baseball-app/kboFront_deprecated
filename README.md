@@ -1,5 +1,9 @@
 # 오늘의 야구
 
+ReactNative CLI
+Typescript
+Redux-toolkit
+
 ### 프로젝트 실행 명령어
 
 ```bash
