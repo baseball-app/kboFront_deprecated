@@ -12,7 +12,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-import Main from './src/screens/main';
+import Main from './src/pages/main';
 
 const Stack = createNativeStackNavigator();
 

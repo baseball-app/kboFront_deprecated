@@ -65,3 +65,9 @@ pod --version
 일단 보류
 
 <br />
+
+# Libraries
+
+### 라우팅
+
+react-navigation/native-stack
