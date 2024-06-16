@@ -12,7 +12,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-import Signup from './src/components/Signup';
+import Main from './src/screens/main';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,7 +31,7 @@ function App(): React.JSX.Element {
       />
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="signup" component={Signup} />
+          <Stack.Screen name="홈" component={Main} />
           {/* <Stack.Screen name="two" component={Router_2} /> */}
         </Stack.Navigator>
       </NavigationContainer>
