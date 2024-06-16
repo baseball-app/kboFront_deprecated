@@ -32,7 +32,6 @@ function App(): React.JSX.Element {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="홈" component={Main} />
-          {/* <Stack.Screen name="two" component={Router_2} /> */}
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
