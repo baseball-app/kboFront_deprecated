@@ -1,5 +1,15 @@
 # 오늘의 야구 프론트
 
+brew install node
+brew install watchman
+### For iOS
+Xcode 설치
+
+### For Android
+일단 보류
+
+<br />
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
