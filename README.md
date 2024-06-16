@@ -1,7 +1,11 @@
 # 오늘의 야구 프론트
 
+```bash
 brew install node
+
 brew install watchman
+```
+
 ### For iOS
 Xcode 설치
 
@@ -23,6 +27,7 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
 
 To start Metro, run the following command from the _root_ of your React Native project:
+
 
 ```bash
 # using npm
