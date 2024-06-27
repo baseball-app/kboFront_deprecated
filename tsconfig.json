@@ -1,6 +1,25 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
-    "esModuleInterop": true
-  }
+    "jsx": "react",
+    "types": ["jest", "react", "react-native", "@react-navigation/native", "@react-navigation/native-stack"],
+    "target": "es5",
+    "module": "commonjs",
+    "strict": true,
+    "baseUrl": ".",
+    "lib": [
+      "dom",
+      "es2015",
+      "es2015.promise" 
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    },
+
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["./node_modules/@types"]
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

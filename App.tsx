@@ -1,47 +1,39 @@
 import React from 'react';
-// import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  StatusBar,
-  useColorScheme,
-  StyleSheet,
-} from 'react-native';
+import { View } from 'react-native';
+import { useFunnel } from './src/hooks/useFunnel';
+import Step1 from './src/pages/login/step1';
+import Step2 from './src/pages/login/step2';
+import Step3 from './src/pages/login/step3';
+import Step4 from './src/pages/login/step4';
 
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-import Main from './src/pages/main';
+const App: React.FC = () => {
+    const { Funnel, Step, setStep } = useFunnel('Step1');
 
-const Stack = createNativeStackNavigator();
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={[backgroundStyle, styles.safeArea]}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="홈" component={Main} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaView>
-  );
-}
-
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-  },
-});
+    return (
+        <View >
+            <Funnel>
+                <Step name="Step1">
+                    <Step1 nextStep={() => setStep('Step2')} />
+                </Step>
+                <Step name="Step2">
+                    <Step2 nextStep={() => setStep('Step3')} prevStep={() => setStep('Step1')} />
+                </Step>
+                <Step name="Step3">
+                    <Step3 nextStep={() => setStep('Step4')} prevStep={() => setStep('Step2')} />
+                </Step>
+                <Step name="Step4">
+                    <Step4 prevStep={() => setStep('Step3')} />
+                </Step>
+            </Funnel>
+        </View>
+    );
+};
 
 export default App;
+
+
+
+
+
