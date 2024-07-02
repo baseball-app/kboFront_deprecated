@@ -10,7 +10,7 @@ const LoginScreen: React.FC = () => {
     const { Funnel, Step, setStep } = useFunnel('Step1');
 
     const handleBack = () => {
-        setStep('Step1'); // 처음 단계로 돌아가는 로직입니다. 필요에 따라 수정하세요.
+        setStep('Step1'); 
     };
 
     return (
