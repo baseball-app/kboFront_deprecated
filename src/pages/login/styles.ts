@@ -27,6 +27,8 @@ interface Styles {
 
 export const styles = StyleSheet.create<Styles>({
     container: {
+        marginTop: 150,
+        margin: 30
     },
     card: {
         backgroundColor: '#f8f8f8',
@@ -102,6 +104,7 @@ export const styles = StyleSheet.create<Styles>({
         marginBottom: 12,
     },
     checkbox: {
+        borderRadius:50,
         width: 30,
         height: 30,
         marginRight: 10,
@@ -111,12 +114,11 @@ export const styles = StyleSheet.create<Styles>({
         alignItems: 'center',
     },
     checkboxChecked: {
+        borderRadius:50,
         borderColor: 'black',
         backgroundColor: 'black',
     },
     checkboxInner: {
-        width: 12,
-        height: 12,
         backgroundColor: '#fff',
     },
     labelSelected: {

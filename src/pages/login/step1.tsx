@@ -1,7 +1,9 @@
+//약관 서비스 동의
+
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
-
+import {styles} from '../login/styles';
 interface Step1Props {
     nextStep: () => void;
 }
@@ -54,66 +56,6 @@ const Step1: React.FC<Step1Props> = ({ nextStep }) => {
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        marginTop: 150,
-        margin: 30
-    },
-    title: {
-        fontSize: 24,
-        marginBottom: 20
-    },
-    checkboxContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 12,
-        marginTop: 30,
-    },
-    checkbox: {
-        width: 30,
-        height: 30,
-        marginRight: 10,
-        borderWidth: 1,
-        borderColor: '#ccc',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    checkboxChecked: {
-        color: 'black',
-        backgroundColor: 'black',
-    },
-    checkboxInner: {
-        width: 12,
-        height: 12,
-        backgroundColor: '#fff',
-    },
-    labelSelected: {
-        color: '#000',
-    },
-    labelUnselected: {
-        color: '#ccc',
-    },
-    button: {
-        backgroundColor: 'black',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        marginTop: 20,
-        borderRadius: 4,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    buttonDisabled: {
-        backgroundColor: '#CCCCCC',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        marginTop: 20,
-        borderRadius: 4,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    buttonText: {
-        color: 'white',
-    },
-});
+
 
 export default Step1;

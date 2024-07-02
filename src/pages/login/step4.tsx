@@ -1,3 +1,5 @@
+//팀선택
+
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
@@ -29,7 +31,7 @@ const Step4: React.FC<Step4Props> = ({ prevStep }) => {
 
     return (
         <View >
-            <Header onBack={prevStep} />
+            
             <View style={styles.card}>
                 <Text style={styles.title}>마이팀을 선택해주세요</Text>
                 <View style={styles.teams}>
@@ -52,7 +54,7 @@ const Step4: React.FC<Step4Props> = ({ prevStep }) => {
                     defaultValue=""
                 />
                 <TouchableOpacity
-                    style={selectedTeam ? styles.button : styles.buttonDisabled}
+                    style={ selectedTeam ? styles.button : styles.buttonDisabled}
                     onPress={handleSubmit(onSubmit)}
                     disabled={!selectedTeam}
                 >

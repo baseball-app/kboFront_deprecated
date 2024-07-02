@@ -30,11 +30,13 @@ const Step2: React.FC<Step2Props> = ({ nextStep, prevStep }) => {
         if (!isValid) {
             setEmailMessage('올바른 이메일을 입력해주세요');
             return;
+        } else {
+            setEmailMessage('사용 가능한 이메일입니다.');
         }
 
         setIsEmailChecked(true);  
-        
 
+        /*
         try {
             const response = await axios.post('/', { email }); // 여긴 후에 채울 예정
             if (response.data.exists) {
@@ -48,11 +50,11 @@ const Step2: React.FC<Step2Props> = ({ nextStep, prevStep }) => {
         } finally {
             setIsEmailChecked(false);  
         }
+        */
     };
 
     return (
         <View>
-            <Header onBack={prevStep} />
             <View style={styles.card}>
                 <Text style={styles.title}>이메일 계정을 입력해주세요</Text>
                 <Controller

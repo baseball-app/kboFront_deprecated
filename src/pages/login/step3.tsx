@@ -1,3 +1,5 @@
+//닉네임 입력회원가입
+
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { useForm, Controller, useWatch } from 'react-hook-form';
@@ -27,7 +29,7 @@ const Step3: React.FC<Step3Props> = ({ nextStep, prevStep }) => {
 
     return (
         <View >
-            <Header onBack={prevStep} />
+            
             <View style={styles.card}>
                 <Text style={styles.title}>닉네임을 입력해주세요</Text>
                 <View style={styles.inputWrapper}>
@@ -60,3 +62,6 @@ const Step3: React.FC<Step3Props> = ({ nextStep, prevStep }) => {
 };
 
 export default Step3;
+
+
+//<Header onBack={prevStep} />
