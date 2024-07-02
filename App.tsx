@@ -1,38 +1,23 @@
 import React from 'react';
-import { View } from 'react-native';
-import { useFunnel } from './src/hooks/useFunnel';
-import Step1 from './src/pages/login/step1';
-import Step2 from './src/pages/login/step2';
-import Step3 from './src/pages/login/step3';
-import Step4 from './src/pages/login/step4';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import WelcomeScreen from './src/pages/login/onboarding';
+import LoginScreen from './src/pages/login/Login';
 
+const Stack = createStackNavigator();
 
-
-const App: React.FC = () => {
-    const { Funnel, Step, setStep } = useFunnel('Step1');
-
+const App = () => {
     return (
-        <View >
-            <Funnel>
-                <Step name="Step1">
-                    <Step1 nextStep={() => setStep('Step2')} />
-                </Step>
-                <Step name="Step2">
-                    <Step2 nextStep={() => setStep('Step3')} prevStep={() => setStep('Step1')} />
-                </Step>
-                <Step name="Step3">
-                    <Step3 nextStep={() => setStep('Step4')} prevStep={() => setStep('Step2')} />
-                </Step>
-                <Step name="Step4">
-                    <Step4 prevStep={() => setStep('Step3')} />
-                </Step>
-            </Funnel>
-        </View>
+        <NavigationContainer>
+            <Stack.Navigator initialRouteName="Welcome">
+                <Stack.Screen name="Welcome" component={WelcomeScreen} />
+                <Stack.Screen name="Login" component={LoginScreen} />
+            </Stack.Navigator>
+        </NavigationContainer>
     );
 };
 
 export default App;
-
 
 
 
