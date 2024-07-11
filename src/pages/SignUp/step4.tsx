@@ -1,10 +1,8 @@
-//팀선택
-
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
-import Header from '../login/headers';
-import { styles } from '../login/styles';
+import { styles } from './styles';
+import Icon from "react-native-vector-icons/Ionicons";
 
 interface Step4Props {
     prevStep: () => void;
@@ -30,10 +28,13 @@ const Step4: React.FC<Step4Props> = ({ prevStep }) => {
     ];
 
     return (
-        <View >
-            
+        <View>
             <View style={styles.card}>
+                <TouchableOpacity onPress={prevStep} style={styles.backButton}>
+                    <Icon name="chevron-back-outline" size={25} color="black" />
+                </TouchableOpacity>
                 <Text style={styles.title}>마이팀을 선택해주세요</Text>
+                <Text style={styles.subText}>마이팀은 내가 응원하고 싶은 최애 야구 구단을 뜻해요.</Text>
                 <View style={styles.teams}>
                     {teams.map((team) => (
                         <TouchableOpacity
@@ -66,4 +67,3 @@ const Step4: React.FC<Step4Props> = ({ prevStep }) => {
 };
 
 export default Step4;
-

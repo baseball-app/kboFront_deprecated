@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import axios from 'axios';
-import Header from '../login/headers';
-import { styles } from '../login/styles';
+import { styles } from './styles';
+import Icon from "react-native-vector-icons/Ionicons";
 
 interface Step2Props {
     nextStep: () => void;
@@ -11,34 +11,29 @@ interface Step2Props {
 }
 
 const Step2: React.FC<Step2Props> = ({ nextStep, prevStep }) => {
-    const { control, handleSubmit, watch, formState: { errors }, trigger } = useForm();
+    const { control, handleSubmit, watch } = useForm();
     const email = watch('email', '');
     const password = watch('password', '');
     const confirmPassword = watch('confirmPassword', '');
     const [emailMessage, setEmailMessage] = useState('');
     const [isEmailChecked, setIsEmailChecked] = useState(false);
 
-    const onSubmit = (data: any) => {
-        console.log(data);
-        nextStep();
+    const onSubmit = async (data: any) => {
+        try {
+            // await axios.post('/password', { password });
+            console.log('Password submitted:', password);
+            nextStep();
+        } catch (error) {
+            console.error('Error submitting password:', error);
+        }
     };
 
     const isButtonDisabled = !email || !password || !confirmPassword || password !== confirmPassword || !emailMessage.includes('사용 가능한 이메일입니다.');
 
     const checkEmail = async () => {
-        const isValid = await trigger('email');
-        if (!isValid) {
-            setEmailMessage('올바른 이메일을 입력해주세요');
-            return;
-        } else {
-            setEmailMessage('사용 가능한 이메일입니다.');
-        }
-
-        setIsEmailChecked(true);  
-
         /*
         try {
-            const response = await axios.post('/', { email }); // 여긴 후에 채울 예정
+            const response = await axios.post('/check-email', { email });
             if (response.data.exists) {
                 setEmailMessage('이미 사용 중인 이메일주소입니다.');
             } else {
@@ -47,15 +42,18 @@ const Step2: React.FC<Step2Props> = ({ nextStep, prevStep }) => {
         } catch (error) {
             console.error('Error checking email:', error);
             setEmailMessage('이메일 확인 중 오류가 발생했습니다.');
-        } finally {
-            setIsEmailChecked(false);  
         }
         */
+        setEmailMessage('사용 가능한 이메일입니다.');
+        setIsEmailChecked(true);
     };
 
     return (
         <View>
             <View style={styles.card}>
+                <TouchableOpacity onPress={prevStep} style={styles.backButton}>
+                    <Icon name="chevron-back-outline" size={25} color="black" />
+                </TouchableOpacity>
                 <Text style={styles.title}>이메일 계정을 입력해주세요</Text>
                 <Controller
                     control={control}
@@ -70,13 +68,6 @@ const Step2: React.FC<Step2Props> = ({ nextStep, prevStep }) => {
                         />
                     )}
                     name="email"
-                    rules={{ 
-                        required: true, 
-                        pattern: {
-                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                            message: '올바른 이메일을 입력해주세요'
-                        } 
-                    }}
                     defaultValue=""
                 />
                 <TouchableOpacity
@@ -87,7 +78,7 @@ const Step2: React.FC<Step2Props> = ({ nextStep, prevStep }) => {
                     <Text style={styles.buttonText}>중복확인</Text>
                 </TouchableOpacity>
                 <Text style={localStyles.emailMessage}>{emailMessage}</Text>
-                <Text style={styles.subTitle}>새 비밀번호를 입력해주세요</Text>
+                <Text style={localStyles.title}>새 비밀번호를 입력해주세요</Text>
                 <Text style={styles.subText}>영문,숫자 포함 8자 이상 20자 이내로 입력해주세요.</Text>
                 <Controller
                     control={control}
@@ -102,7 +93,6 @@ const Step2: React.FC<Step2Props> = ({ nextStep, prevStep }) => {
                         />
                     )}
                     name="password"
-                    rules={{ required: true }}
                     defaultValue=""
                 />
                 <Controller
@@ -118,7 +108,6 @@ const Step2: React.FC<Step2Props> = ({ nextStep, prevStep }) => {
                         />
                     )}
                     name="confirmPassword"
-                    rules={{ required: true }}
                     defaultValue=""
                 />
                 <TouchableOpacity
@@ -134,28 +123,32 @@ const Step2: React.FC<Step2Props> = ({ nextStep, prevStep }) => {
 };
 
 const localStyles = StyleSheet.create({
-    checkButton: {
-        backgroundColor: '#CCCCCC',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 4,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: 20,
+    emailMessage: {
+        marginTop: 5,
+        color: 'red',
     },
     checkedButton: {
-        backgroundColor: '#AAAAAA',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 4,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: 20,
+        backgroundColor: '#ccc',
+        padding: 10,
+        borderRadius: 5,
     },
-    emailMessage: {
-        color: '#FF0000',
-        marginBottom: 10,
+    checkButton: {
+        backgroundColor: '#007bff',
+        padding: 10,
+        borderRadius: 5,
     },
+    title:{
+        marginTop:60,
+        fontSize: 24,
+        marginBottom:10,
+    }
 });
 
 export default Step2;
+
+
+
+
+
+
+

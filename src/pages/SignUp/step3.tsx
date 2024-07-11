@@ -1,10 +1,8 @@
-//닉네임 입력회원가입
-
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { useForm, Controller, useWatch } from 'react-hook-form';
-import Header from '../login/headers';
-import { styles } from '../login/styles';
+import { styles } from './styles';
+import Icon from "react-native-vector-icons/Ionicons";
 
 interface Step3Props {
     nextStep: () => void;
@@ -28,11 +26,14 @@ const Step3: React.FC<Step3Props> = ({ nextStep, prevStep }) => {
     const isButtonDisabled = !nickname;
 
     return (
-        <View >
-            
+        <View>
             <View style={styles.card}>
+                <TouchableOpacity onPress={prevStep} style={styles.backButton}>
+                    <Icon name="chevron-back-outline" size={25} color="black" />
+                </TouchableOpacity>
                 <Text style={styles.title}>닉네임을 입력해주세요</Text>
-                <View style={styles.inputWrapper}>
+                <Text style={styles.subText}>한글/영어/숫자/밑줄/띄어쓰기를 사용할 수 있습니다.</Text>
+                
                     <Controller
                         control={control}
                         render={({ field: { onChange, value } }) => (
@@ -48,7 +49,7 @@ const Step3: React.FC<Step3Props> = ({ nextStep, prevStep }) => {
                         rules={{ required: true }}
                         defaultValue=""
                     />
-                </View>
+            
                 <TouchableOpacity
                     style={isButtonDisabled ? styles.buttonDisabled : styles.button}
                     onPress={handleSubmit(onSubmit)}
@@ -62,6 +63,3 @@ const Step3: React.FC<Step3Props> = ({ nextStep, prevStep }) => {
 };
 
 export default Step3;
-
-
-//<Header onBack={prevStep} />

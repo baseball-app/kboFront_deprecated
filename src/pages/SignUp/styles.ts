@@ -3,7 +3,6 @@ import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 interface Styles {
     container: ViewStyle;
     card: ViewStyle;
-    header: ViewStyle;
     backButton: TextStyle;
     button: ViewStyle;
     buttonDisabled: ViewStyle;
@@ -23,12 +22,58 @@ interface Styles {
     team: ViewStyle;
     teamText: TextStyle;
     buttonText: TextStyle;
+    terms:ViewStyle;
+    checkboxContainerSelected:ViewStyle;
 }
 
 export const styles = StyleSheet.create<Styles>({
     container: {
+        flex: 1,
+        justifyContent: 'space-between', 
+        padding: 16,
         marginTop: 150,
-        margin: 30
+        
+    },
+    terms: {
+        marginBottom:"50%",
+        padding:3,
+        marginRight:10,
+        justifyContent:"flex-start",
+
+
+    },
+    checkboxContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        width:"100%",
+        marginBottom: 12,
+        padding:10,
+
+    },
+    checkboxContainerSelected: {
+        backgroundColor: '#e0e0e0',
+        borderRadius:10,
+        width:"100%", 
+    },
+    checkbox: {
+        borderRadius:50,
+        width: 30,
+        height: 30,
+        marginRight: 10,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        
+        flexDirection: 'row',
+    },
+    checkboxChecked: {
+        borderRadius:20,
+        borderColor: 'black',
+        backgroundColor: 'black',
+        
+    },
+    checkboxInner: {
+        backgroundColor: '#fff',
+        marginRight:"90%"
     },
     card: {
         backgroundColor: '#f8f8f8',
@@ -42,16 +87,18 @@ export const styles = StyleSheet.create<Styles>({
         width: '100%',
         height: '100%'
     },
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        marginBottom: 20,
-    },
     backButton: {
-        fontSize: 16,
-        color: '#007BFF',
+        marginBottom:30,
+        marginTop:20,
+        fontSize: 30,
+        color: 'black',
+
     },
     button: {
+        bottom:16,
+        left:16,
+        right:16,
+        position:"absolute",
         backgroundColor: 'black',
         paddingVertical: 10,
         paddingHorizontal: 20,
@@ -61,6 +108,10 @@ export const styles = StyleSheet.create<Styles>({
         justifyContent: 'center',
     },
     buttonDisabled: {
+        bottom:16,
+        left:16,
+        right:16,
+        position:"absolute",
         backgroundColor: '#CCCCCC',
         paddingVertical: 10,
         paddingHorizontal: 20,
@@ -81,6 +132,7 @@ export const styles = StyleSheet.create<Styles>({
     title: {
         fontSize: 24,
         marginBottom: 20,
+        marginRight:140
     },
     subTitle: {
         fontSize: 16,
@@ -98,29 +150,7 @@ export const styles = StyleSheet.create<Styles>({
         fontSize: 16,
         marginBottom: 8,
     },
-    checkboxContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 12,
-    },
-    checkbox: {
-        borderRadius:50,
-        width: 30,
-        height: 30,
-        marginRight: 10,
-        borderWidth: 1,
-        borderColor: '#ccc',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    checkboxChecked: {
-        borderRadius:50,
-        borderColor: 'black',
-        backgroundColor: 'black',
-    },
-    checkboxInner: {
-        backgroundColor: '#fff',
-    },
+
     labelSelected: {
         color: '#000',
     },
@@ -146,4 +176,6 @@ export const styles = StyleSheet.create<Styles>({
     buttonText: {
         color: 'white',
     },
+    
 });
+
