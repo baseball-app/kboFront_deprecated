@@ -1,47 +1,35 @@
+//로그인이 되어있을 때 페이지 안했을 때의 조건부 렌더링 해야함..
+
 import React from 'react';
-// import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  StatusBar,
-  useColorScheme,
-  StyleSheet,
-} from 'react-native';
-
+import {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createStackNavigator} from '@react-navigation/stack';
+import WelcomeScreen from './src/pages/Home/onboarding';
+import SignUpScreen from './src/pages/SignUp/SignUp';
+import Login from './src/pages/login/Login';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+const Stack = createStackNavigator();
 
-import Main from './src/pages/main';
-
-const Stack = createNativeStackNavigator();
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+const App = () => {
+  //const [IsSignedIn, setIsSignedIn] = useState(false);
 
   return (
-    <SafeAreaView style={[backgroundStyle, styles.safeArea]}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="홈" component={Main} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaView>
-  );
-}
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Welcome">
+        <Stack.Screen
+          name="  "
+          component={WelcomeScreen} //options={{ headerShown: false }}
+        />
+        <Stack.Screen name="Login" component={Login} />
 
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-  },
-});
+        <Stack.Screen
+          name="SignUp"
+          component={SignUpScreen}
+          options={{headerShown: false}}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
 
 export default App;
