@@ -4,6 +4,10 @@ module.exports = {
   settings: {
     'import/resolver': {
       'babel-module': {},
+      node: {
+        paths: ['src'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
     },
   },
 };

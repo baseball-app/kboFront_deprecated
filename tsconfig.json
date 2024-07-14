@@ -1,18 +1,20 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "types": ["jest", "react", "react-native", "@react-navigation/native", "@react-navigation/native-stack"],
+    "types": [
+      "jest",
+      "react",
+      "react-native",
+      "@react-navigation/native",
+      "@react-navigation/native-stack"
+    ],
     "target": "es5",
     "module": "commonjs",
     "strict": true,
     "baseUrl": ".",
-    "lib": [
-      "dom",
-      "es2015",
-      "es2015.promise" 
-    ],
+    "lib": ["dom", "es2015", "es2015.promise"],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["src/*"]
     },
 
     "esModuleInterop": true,
