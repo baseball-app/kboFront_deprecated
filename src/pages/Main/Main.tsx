@@ -1,6 +1,5 @@
 import React from 'react';
-import CustomCalendar from '../../components/Calendar/Calendar';
-
+import CustomCalendar from '@/components/Calendar/Calendar';
 const Main = () => {
   return (
     <>
