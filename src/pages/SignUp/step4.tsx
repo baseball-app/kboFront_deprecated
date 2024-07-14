@@ -3,7 +3,6 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import {styles} from './styles';
 import Icon from 'react-native-vector-icons/Ionicons';
-import TempNavigationButton from '@/src/components/TempNavigationButton';
 
 interface Step4Props {
   prevStep: () => void;
@@ -77,10 +76,6 @@ const Step4: React.FC<Step4Props> = ({prevStep}) => {
           disabled={!selectedTeam}>
           <Text style={styles.buttonText}>시작하기</Text>
         </TouchableOpacity>
-        <TempNavigationButton
-          destinationName="Main"
-          buttonText="Main으로 이동"
-        />
       </View>
     </View>
   );
