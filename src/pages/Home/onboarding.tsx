@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text, Button} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-// import TempNavigationButton from '../../components/TempNavigationButton';
 import TempNavigationButton from '@/components/TempNavigationButton';
 
 type RootStackParamList = {
