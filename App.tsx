@@ -7,7 +7,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import WelcomeScreen from './src/pages/Home/onboarding';
 import SignUpScreen from './src/pages/SignUp/SignUp';
 import Login from './src/pages/login/Login';
-import Main from './src/pages/Main/Main';
+import Main from './src/pages/main/Main';
 
 const Stack = createStackNavigator();
 
