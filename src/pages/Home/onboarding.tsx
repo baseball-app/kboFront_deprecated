@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text, Button} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import TempNavigationButton from '@/components/TempNavigationButton';
 
 type RootStackParamList = {
   Login: undefined;
@@ -23,7 +22,6 @@ const WelcomeScreen: React.FC = () => {
         title="시작하기"
         onPress={() => navigation.navigate('SignUp' as never)}
       />
-      <TempNavigationButton destinationName="Main" buttonText="Main" />
     </View>
   );
 };
