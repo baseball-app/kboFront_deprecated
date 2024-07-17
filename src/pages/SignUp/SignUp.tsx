@@ -22,7 +22,7 @@ const SignUpScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
                     <Step3 nextStep={() => setStep('Step4')} prevStep={() => setStep('Step2')} />
                 </Step>
                 <Step name="Step4">
-                    <Step4 prevStep={() => setStep('Step3')} />
+                    <Step4 prevStep={() => setStep('Step3')} navigation={navigation} />
                 </Step>
             </Funnel>
         </View>

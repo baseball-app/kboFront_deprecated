@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import axios from 'axios';
 import {styles}  from '../SignUp/styles';
 
-const Login = ({ }) => {
+//const Login = ({ }) => {
+const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);  // 로그인 상태 관리: 초기값은 false 
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            navigation.replace('Main');
+        }
+    }, [isLoggedIn, navigation]);
+
 
     const handleLogin = () => {
         // axios.post('API_URL', { email, password })
@@ -17,7 +26,9 @@ const Login = ({ }) => {
         //         // 로그인 실패 시 수행할 작업
         //         console.error(error);
         //     });
+        navigation.replace('Main');
     };
+    
 
     return (
         <View style={Localstyles.EmailContainer}>
