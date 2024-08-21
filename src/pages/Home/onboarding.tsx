@@ -22,6 +22,10 @@ const WelcomeScreen: React.FC = () => {
         title="시작하기"
         onPress={() => navigation.navigate('SignUp' as never)}
       />
+      <Button
+        title="main"
+        onPress={() => navigation.navigate('Main' as never)}
+      />
     </View>
   );
 };
