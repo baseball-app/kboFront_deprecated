@@ -10,6 +10,7 @@ import Login from './src/pages/login/Login';
 import Main from './src/pages/Main/Main';
 import MyPage from './src/pages/Mypage/Mypage';
 import AccountSetting from './src/pages/Mypage/AccountSetting';
+import MyProfile from './src/pages/Mypage/MyProfile';
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -43,6 +44,11 @@ const App = () => {
           name="AccountSetting"
           component={AccountSetting}
           options={{title: '계정 설정'}}
+        />
+        <Stack.Screen
+          name="MyProfile"
+          component={MyProfile}
+          options={{title: '나의 프로필'}}
         />
       </Stack.Navigator>
     </NavigationContainer>

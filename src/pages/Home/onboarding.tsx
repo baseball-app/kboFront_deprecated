@@ -23,8 +23,12 @@ const WelcomeScreen: React.FC = () => {
         onPress={() => navigation.navigate('SignUp' as never)}
       />
       <Button
-        title="main"
+        title="캘린더"
         onPress={() => navigation.navigate('Main' as never)}
+      />
+      <Button
+        title="마이페이지"
+        onPress={() => navigation.navigate('MyPage' as never)}
       />
     </View>
   );
