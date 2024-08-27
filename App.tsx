@@ -14,6 +14,7 @@ import MyProfile from './src/pages/Mypage/MyProfile';
 import TeamSelection from './src/pages/Mypage/TeamSelection';
 import FriendManagement from './src/pages/Mypage/FriendManagement';
 import InviteSetting from './src/pages/Mypage/InviteSetting';
+import GameSchedule from './src/pages/GameSchedule/GameSchedule';
 
 const Stack = createStackNavigator();
 
@@ -68,6 +69,11 @@ const App = () => {
           name="InviteSetting"
           component={InviteSetting}
           options={{title: '초대하기', headerShown: false}}
+        />
+        <Stack.Screen
+          name="GameSchedule"
+          component={GameSchedule}
+          options={{title: '경기 일정 선택', headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -30,6 +30,10 @@ const WelcomeScreen: React.FC = () => {
         title="마이페이지"
         onPress={() => navigation.navigate('MyPage' as never)}
       />
+      <Button
+        title="경기일정선택"
+        onPress={() => navigation.navigate('GameSchedule' as never)}
+      />
     </View>
   );
 };
