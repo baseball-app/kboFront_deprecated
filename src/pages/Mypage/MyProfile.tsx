@@ -1,11 +1,32 @@
-import React from 'react';
-import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  Alert,
+} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation} from '@react-navigation/native';
 
 const MyProfile: React.FC = () => {
   const navigation = useNavigation();
+  const [showConfirm, setShowConfirm] = useState(false);
+
+  const handleChangeTeam = () => {
+    Alert.alert('안내', '팀을 변경하게 되면 기존 가입 정보는 초기화됩니다.', [
+      {
+        text: '취소',
+        style: 'cancel',
+      },
+      {
+        text: '확인',
+        onPress: () => navigation.navigate('TeamSelection' as never),
+      },
+    ]);
+  };
 
   const handleNavigation = (screen: string) => {
     navigation.navigate(screen as never);
@@ -29,7 +50,9 @@ const MyProfile: React.FC = () => {
           <Text style={styles.infoLabel}>나의 구단</Text>
           <View style={styles.teamContainer}>
             <Text style={styles.teamName}>삼성라이온즈</Text>
-            <TouchableOpacity style={styles.changeButton}>
+            <TouchableOpacity
+              style={styles.changeButton}
+              onPress={handleChangeTeam}>
               <Text style={styles.changeButtonText}>변경하기</Text>
             </TouchableOpacity>
           </View>

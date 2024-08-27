@@ -11,6 +11,8 @@ import Main from './src/pages/Main/Main';
 import MyPage from './src/pages/Mypage/Mypage';
 import AccountSetting from './src/pages/Mypage/AccountSetting';
 import MyProfile from './src/pages/Mypage/MyProfile';
+import TeamSelection from './src/pages/Mypage/TeamSelection';
+
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -49,6 +51,11 @@ const App = () => {
           name="MyProfile"
           component={MyProfile}
           options={{title: '나의 프로필'}}
+        />
+        <Stack.Screen
+          name="TeamSelection"
+          component={TeamSelection}
+          options={{title: '마이팀설정하기', headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
