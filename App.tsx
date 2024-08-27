@@ -38,7 +38,7 @@ const App = () => {
         <Stack.Screen
           name="Main"
           component={Main}
-          options={{headerShown: true}}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="MyPage"
