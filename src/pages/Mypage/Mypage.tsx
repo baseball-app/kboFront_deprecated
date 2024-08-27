@@ -28,7 +28,7 @@ const MyPage: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>마이페이지</Text>
+      {/* <Text style={styles.title}>마이페이지</Text> */}
       {menuItems.map((item, index) => (
         <TouchableOpacity
           key={index}
