@@ -11,9 +11,15 @@ const MyPage: React.FC = () => {
     {title: '초대하기', screen: 'InviteSetting'},
     {
       title: '친구 관리',
-      screen: 'ManageFriends',
+      screen: '#',
+      // screen: 'ManageFriends',
     },
-    {title: '데이터 초기화', screen: 'ResetData', textColor: '#FF6B6B'},
+    {
+      title: '데이터 초기화',
+      // screen: 'ResetData',
+      screen: '#',
+      textColor: '#FF6B6B',
+    },
   ];
 
   const handleNavigation = (screen: string) => {

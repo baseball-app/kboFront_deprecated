@@ -2,29 +2,38 @@ import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {useNavigation} from '@react-navigation/native';
 
 const AccountSetting: React.FC = () => {
+  const navigation = useNavigation();
   const email = 'aliceyoo01@naver.com'; // 사용자 이메일
 
   const menuItems = [
-    {title: '나의 프로필', icon: 'person'},
-    {title: '비밀번호 재설정', icon: 'lock'},
+    {title: '나의 프로필', icon: 'person', screen: 'MyProfile'},
+    {title: '비밀번호 재설정', icon: 'lock', screen: '#'},
   ];
+
+  const handleNavigation = (screen: string) => {
+    navigation.navigate(screen as never);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
+      {/* <View style={styles.header}>
         <TouchableOpacity>
           <Icon name="arrow-back" size={24} color="#000" />
         </TouchableOpacity>
         <Text style={styles.title}>계정 설정</Text>
-      </View>
+      </View> */}
       <View style={styles.emailContainer}>
         <Text style={styles.emailLabel}>내가 로그인한 이메일 계정</Text>
         <Text style={styles.email}>{email}</Text>
       </View>
       {menuItems.map((item, index) => (
-        <TouchableOpacity key={index} style={styles.menuItem}>
+        <TouchableOpacity
+          key={index}
+          style={styles.menuItem}
+          onPress={() => handleNavigation(item.screen)}>
           <Icon name={item.icon} size={24} color="#000" style={styles.icon} />
           <Text style={styles.menuText}>{item.title}</Text>
           <Icon
