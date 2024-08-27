@@ -8,7 +8,8 @@ import WelcomeScreen from './src/pages/Home/onboarding';
 import SignUpScreen from './src/pages/SignUp/SignUp';
 import Login from './src/pages/login/Login';
 import Main from './src/pages/Main/Main';
-
+import MyPage from './src/pages/Mypage/Mypage';
+import AccountSetting from './src/pages/Mypage/AccountSetting';
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -32,6 +33,16 @@ const App = () => {
           name="Main"
           component={Main}
           options={{headerShown: true}}
+        />
+        <Stack.Screen
+          name="MyPage"
+          component={MyPage}
+          options={{title: '마이페이지'}}
+        />
+        <Stack.Screen
+          name="AccountSetting"
+          component={AccountSetting}
+          options={{title: '계정 설정'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
