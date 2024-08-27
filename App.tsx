@@ -73,7 +73,7 @@ const App = () => {
         <Stack.Screen
           name="GameSchedule"
           component={GameSchedule}
-          options={{title: '경기 일정 선택', headerShown: false}}
+          options={{title: '경기 일정 선택', headerShown: true}}
         />
       </Stack.Navigator>
     </NavigationContainer>
