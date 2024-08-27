@@ -12,6 +12,7 @@ import MyPage from './src/pages/Mypage/Mypage';
 import AccountSetting from './src/pages/Mypage/AccountSetting';
 import MyProfile from './src/pages/Mypage/MyProfile';
 import TeamSelection from './src/pages/Mypage/TeamSelection';
+import FriendManagement from './src/pages/Mypage/FriendManagement';
 
 const Stack = createStackNavigator();
 
@@ -56,6 +57,11 @@ const App = () => {
           name="TeamSelection"
           component={TeamSelection}
           options={{title: '마이팀설정하기', headerShown: false}}
+        />
+        <Stack.Screen
+          name="FriendManagement"
+          component={FriendManagement}
+          options={{title: '친구관리', headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>

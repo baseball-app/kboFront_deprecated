@@ -11,8 +11,7 @@ const MyPage: React.FC = () => {
     {title: '초대하기', screen: 'InviteSetting'},
     {
       title: '친구 관리',
-      screen: '#',
-      // screen: 'ManageFriends',
+      screen: 'FriendManagement',
     },
     {
       title: '데이터 초기화',
