@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, Alert} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation} from '@react-navigation/native';
@@ -16,14 +16,30 @@ const MyPage: React.FC = () => {
     },
     {
       title: '데이터 초기화',
-      // screen: 'ResetData',
       screen: '#',
       textColor: '#FF6B6B',
     },
   ];
-
-  const handleNavigation = (screen: string) => {
-    navigation.navigate(screen as never);
+  const handleNavigation = (screen: string, title: string) => {
+    if (title === '데이터 초기화') {
+      Alert.alert(
+        '안내',
+        '데이터를 초기화하시겠습니까? 초기화된 데이터는 복구할 수 없습니다.',
+        [
+          {
+            text: '취소',
+            style: 'cancel',
+          },
+          {
+            text: '초기화',
+            onPress: () => console.log('데이터 초기화 로직 실행'),
+            // 여기에 데이터 초기화 로직
+          },
+        ],
+      );
+    } else if (screen !== '#') {
+      navigation.navigate(screen as never);
+    }
   };
 
   return (
@@ -33,7 +49,7 @@ const MyPage: React.FC = () => {
         <TouchableOpacity
           key={index}
           style={styles.menuItem}
-          onPress={() => handleNavigation(item.screen)}>
+          onPress={() => handleNavigation(item.screen, item.title)}>
           <Text style={[styles.menuText, {color: item.textColor || '#000'}]}>
             {item.title}
           </Text>
