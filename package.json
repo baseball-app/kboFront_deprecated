@@ -2,6 +2,7 @@
   "name": "kbofront",
   "version": "0.0.1",
   "private": true,
+  "proxy": "http://choi1994.synology.me:8000",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -16,7 +17,7 @@
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
     "@react-navigation/stack": "^6.4.0",
-    "@reduxjs/toolkit": "^2.2.6",
+    "@reduxjs/toolkit": "^2.2.7",
     "axios": "^1.7.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",

@@ -1,6 +1,6 @@
 //이용약관 text 내용
 // 길어서 여기에 따로 정리해두었음
-// 안보이게 해야겠지..?? >> 나중에 env 파일로 수정하겠음!
+
 
 export const termsData = {
     terms2: `

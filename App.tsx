@@ -1,6 +1,7 @@
 //로그인이 되어있을 때 페이지 안했을 때의 조건부 렌더링 해야함..
 
 import React from 'react';
+
 import {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -19,8 +20,9 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Welcome">
         <Stack.Screen
-          name="  "
-          component={WelcomeScreen} //options={{ headerShown: false }}
+          name="WelcomeScreen"
+          component={WelcomeScreen} 
+          options={{ headerShown: false }}
         />
         <Stack.Screen name="Login" component={Login} />
 
@@ -38,5 +40,6 @@ const App = () => {
     </NavigationContainer>
   );
 };
+
 
 export default App;

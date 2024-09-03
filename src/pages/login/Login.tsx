@@ -1,38 +1,42 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import axios from 'axios';
-import {styles}  from '../SignUp/styles';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { styles } from '../SignUp/styles';
+import { login } from '../../api/api';
 
-//const Login = ({ }) => {
-const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
+const Login = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [isLoggedIn, setIsLoggedIn] = useState(false);  // 로그인 상태 관리: 초기값은 false 
 
-    useEffect(() => {
-        if (isLoggedIn) {
-            navigation.replace('Main');
+    const handleLogin = async () => {
+        if (!email || !password) {
+            Alert.alert('오류', '이메일과 비밀번호를 모두 입력해주세요.');
+            return;
         }
-    }, [isLoggedIn, navigation]);
 
-
-    const handleLogin = () => {
-        // axios.post('API_URL', { email, password })
-        //     .then(response => {
-        //         // 로그인 성공 시 수행할 작업
-        //         navigation.navigate('Home');
-        //     })
-        //     .catch(error => {
-        //         // 로그인 실패 시 수행할 작업
-        //         console.error(error);
-        //     });
-        navigation.replace('Main');
+        try {
+            const response = await login(email, password);
+            console.log('Login response:', response); // 응답 데이터 확인용
+            if (response.status === 200) { // 로그인 성공
+                navigation.replace('Main');
+            } else { // 실패
+                Alert.alert('로그인 실패', response.data.message || '로그인에 실패했습니다. 다시 시도해주세요.');
+            }
+        } catch (error) {
+            console.error('Error during login: ', error);
+            Alert.alert('오류', '로그인 중 오류가 발생했습니다. 다시 시도해주세요.');
+        }
     };
-    
+
+    const handleFindEmail = () => {
+        console.log('이메일 찾기');
+    };
+
+    const handleFindPassword = () => {
+        console.log('비밀번호 찾기');
+    };
 
     return (
-        <View style={Localstyles.EmailContainer}>
-    
+        <View style={localStyles.EmailContainer}>
             <Text style={styles.label}>이메일</Text>
             <TextInput
                 style={styles.input}
@@ -40,6 +44,8 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                 placeholderTextColor="#999"
                 value={email}
                 onChangeText={setEmail}
+                keyboardType="email-address"
+                autoCapitalize="none"
             />
             <Text style={styles.label}>비밀번호</Text>
             <TextInput
@@ -50,67 +56,44 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                 value={password}
                 onChangeText={setPassword}
             />
-            <TouchableOpacity style={Localstyles.button} onPress={handleLogin}>
+            <TouchableOpacity style={localStyles.button} onPress={handleLogin}>
                 <Text style={styles.buttonText}>로그인</Text>
-            </TouchableOpacity >
+            </TouchableOpacity>
 
-            <View style={Localstyles.LoginFind}>
-                <Text style={Localstyles.LoginFind}>이메일 찾기</Text>
-                <Text style={Localstyles.LoginFind}>|</Text>
-                <Text style={Localstyles.LoginFind}>비밀번호 찾기</Text>
+            <View style={localStyles.LoginFind}>
+                <TouchableOpacity onPress={handleFindEmail}>
+                    <Text style={localStyles.LoginFindText}>이메일 찾기</Text>
+                </TouchableOpacity>
+                <Text style={localStyles.LoginFindText}>|</Text>
+                <TouchableOpacity onPress={handleFindPassword}>
+                    <Text style={localStyles.LoginFindText}>비밀번호 찾기</Text>
+                </TouchableOpacity>
             </View>
-
         </View>
     );
 };
 
-const Localstyles= StyleSheet.create({
+const localStyles = StyleSheet.create({
     EmailContainer: {
-        padding:30,
-        marginTop:30,
+        padding: 30,
+        marginTop: 30,
     },
     LoginFind: {
-        paddingRight:10,
-        flexDirection:"row",
-        justifyContent:"center",
-        marginTop:3,
-        
-
+        flexDirection: "row",
+        justifyContent: "center",
+        marginTop: 10,
+    },
+    LoginFindText: {
+        paddingHorizontal: 10,
     },
     button: {
-        marginBottom:10,
-        marginTop:60,
-        borderRadius:10,
+        marginBottom: 10,
+        marginTop: 60,
+        borderRadius: 10,
         backgroundColor: 'black',
         paddingVertical: 20,
-        alignItems:"center",
+        alignItems: "center",
     }
-    
-
 });
 
 export default Login;
-
-/*
-req body
-{
-	email: "aaa@naver.com",
-	password: "",
-}
-
-res body
-{
-status_code: 200 / 209 / 500,
-data: {
-		email: "aaa@naver.com",
-		nickname:"",
-		myteam:"",
-		accessToken:"",
-		refreshToken:"",
-		datetime:""
-	}
-}
-*/
-
-
-

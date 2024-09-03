@@ -21,7 +21,7 @@ const Step4: React.FC<Step4Props> = ({ prevStep, navigation }) => {
       [
         {
           text: '확인',
-          onPress: () => navigation.navigate('Login')
+          onPress: () => navigation.navigate('WelcomeScreen')
         }
       ]
     );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Modal, Dimensions } from 'react-native';
 import { styles } from './styles';
 import { termsData } from './terms';
 
@@ -8,15 +8,22 @@ interface Step1Props {
 }
 
 interface Terms {
-  [key: string]: boolean;
+    [key: string]: boolean;
 }
 
 const Step1: React.FC<Step1Props> = ({ nextStep }) => {
     const [terms, setTerms] = useState<Terms>({ terms1: false, terms2: false, terms3: false });
-    const [showTerms, setShowTerms] = useState({ terms2: false, terms3: false });
+    const [modalVisible, setModalVisible] = useState<string | null>(null);
 
     const handleCheckboxChange = (name: string) => {
-        setTerms({ ...terms, [name]: !terms[name] });
+        if (name === 'terms1') {
+            const allChecked = !terms.terms1;
+            setTerms({ terms1: allChecked, terms2: allChecked, terms3: allChecked });
+        } else {
+            const newTerms = { ...terms, [name]: !terms[name] };
+            const allChecked = newTerms.terms2 && newTerms.terms3;
+            setTerms({ ...newTerms, terms1: allChecked });
+        }
     };
 
     const onSubmit = () => {
@@ -24,11 +31,19 @@ const Step1: React.FC<Step1Props> = ({ nextStep }) => {
         nextStep();
     };
 
+    const openModal = (name: string) => {
+        setModalVisible(name);
+    };
+
+    const closeModal = () => {
+        setModalVisible(null);
+    };
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>오늘의 야구 서비스 이용에 동의해 주세요</Text>
             <View style={styles.terms}>
-                {[
+                {[  
                     { name: 'terms1', label: '(필수) 약관 모두 동의' },
                     { name: 'terms2', label: '(필수) 오늘의 야구 이용약관' },
                     { name: 'terms3', label: '(필수) 오늘의 야구 개인정보 수집 및 이용에 대한 동의' }
@@ -49,19 +64,12 @@ const Step1: React.FC<Step1Props> = ({ nextStep }) => {
                                 </TouchableOpacity>
                                 
                                 {term.name !== 'terms1' && (
-                                    <TouchableOpacity onPress={() => setShowTerms({ ...showTerms, [term.name]: !showTerms[term.name] })}>
-                                        <Text style={localStyles.moreButton}>{showTerms[term.name] ? '확인' : '더보기'}</Text>
+                                    <TouchableOpacity onPress={() => openModal(term.name)}>
+                                        <Text style={localStyles.moreButton}>보기</Text>
                                     </TouchableOpacity>
                                 )}
                             </View>
                         </View>
-                        {showTerms[term.name] && (
-                            <View style={localStyles.scrollContainer}>
-                                <ScrollView>
-                                    <Text style={localStyles.termsText}>{termsData[term.name]}</Text>
-                                </ScrollView>
-                            </View>
-                        )}
                     </View>
                 ))}
             </View>
@@ -72,11 +80,29 @@ const Step1: React.FC<Step1Props> = ({ nextStep }) => {
             >
                 <Text style={styles.buttonText}>동의</Text>
             </TouchableOpacity>
+            
+            <Modal
+                visible={modalVisible !== null}
+                animationType="slide"
+                transparent={true}
+            >
+                <View style={localStyles.modalContainer}>
+                    <View style={localStyles.modalContent}>
+                        <TouchableOpacity onPress={closeModal}>
+                            <Text style={localStyles.closeButton}>X</Text>
+                        </TouchableOpacity>
+                        <ScrollView>
+                            <Text style={localStyles.termsText}>{termsData[modalVisible]}</Text>
+                        </ScrollView>
+                    </View>
+                </View>
+            </Modal>
         </View>
     );
 };
 
-//이용약관에 대한 스타일링
+const { width, height } = Dimensions.get('window');
+
 const localStyles = StyleSheet.create({
     termsText: {
         color: '#666',
@@ -100,12 +126,24 @@ const localStyles = StyleSheet.create({
         flex: 1,
         flexWrap: 'wrap',
     },
-    scrollContainer: {
-        maxHeight: 150,
-        marginTop: 10,
-        marginBottom: 10,
-        backgroundColor: '#f0f0f0',
-        padding: 10,
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    modalContent: {
+        width: width * 0.9,  // 화면 크기의 90%
+        height: height * 0.7,  // 화면 크기의 70%
+        backgroundColor: 'white',
+        padding: 20,
+        borderRadius: 10,
+        alignItems: 'flex-start',
+    },
+    closeButton: {
+        alignSelf: 'flex-end',
+        fontSize: 18,
+        fontWeight: 'bold',
     },
 });
 

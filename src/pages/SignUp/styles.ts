@@ -22,9 +22,7 @@ interface Styles {
     team: ViewStyle;
     teamText: TextStyle;
     buttonText: TextStyle;
-    terms:ViewStyle;
-    moreButton:TextStyle;
-    termsText:TextStyle; 
+    terms:ViewStyle;    
     checkboxContainerSelected:ViewStyle;
 }
 
@@ -43,14 +41,6 @@ export const styles = StyleSheet.create<Styles>({
         justifyContent:"flex-start",
 
 
-    },
-    termsText: {
-        marginBottom: 10,
-        color: '#666',
-    },
-    moreButton: {
-        marginTop: -10,
-        marginBottom: 10,
     },
     checkboxContainer: {
         flexDirection: 'row',
