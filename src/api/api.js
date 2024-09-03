@@ -1,10 +1,10 @@
-// api.js
+
 
 import axios from 'axios';
 
 // Axios 인스턴스 생성
 const apiClient = axios.create({
-  baseURL: 'http://choi1994.synology.me:8000/', 
+  baseURL: process.env.REACT_APP_BASE_URL, 
   timeout: 5000,
   headers: { 'Content-Type': 'application/json' },
 });
@@ -28,8 +28,7 @@ export const register = async (email, password, nickname, phone, myteam) => {
 
 // 로그인 요청 api
 
-// id: signup@testing.four
-// pw: rjwlks
+
 export const login = async (email, password) => {
     try {
         // email과 password를 그대로 사용하여 POST 요청 보냄
