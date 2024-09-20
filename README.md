@@ -8,6 +8,7 @@ Redux-toolkit
 
 ```bash
 npm run ios
+npm run ios -- --simulator="iPhone 14"
 ```
 
 ### 기본 필요 환경 세팅
